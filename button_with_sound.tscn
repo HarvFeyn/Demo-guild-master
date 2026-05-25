@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://6xmy606okvso"]
+
+[ext_resource type="Script" uid="uid://mopn0q0yqj4l" path="res://button.gd" id="1_a57t6"]
+[ext_resource type="AudioStream" uid="uid://dtgcg3tift0jw" path="res://assets/sounds/denielcz-immersivecontrol-button-click-sound-463065.mp3" id="2_0g0kn"]
+
+[node name="ButtonWithSound" type="Button" unique_id=1722355735]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_a57t6")
+
+[node name="OnClickSound" type="AudioStreamPlayer" parent="." unique_id=792521333]
+stream = ExtResource("2_0g0kn")
+volume_db = -10.628
+bus = &"sfx"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
