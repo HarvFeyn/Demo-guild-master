@@ -17,14 +17,14 @@ func _ready() -> void:
 	EventBus.refreshCharData.connect(displayPlayerInfo)
 	$MarginContainer/VBoxContainer/PlayerName.text = global_data.statNpcList[idChar].charName
 	displayPlayerInfo()
-	
+
 func displayPlayerInfo() -> void:
 	displayPlayerLvl()
 	displayPlayerClass()
 	displayPlayerMaxHealth()
 	displayPlayerPower()
 	displayPlayerDefense()
-	
+
 func displayPlayerLvl() -> void:
 	$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayerLvl.text = "Lvl " + str(global_data.statNpcList[idChar].level)
 
@@ -57,7 +57,6 @@ func _update_style() -> void:
 		add_theme_stylebox_override("panel", style_selected)
 	else:
 		add_theme_stylebox_override("panel", style_normal)
-
 
 func _on_kick_pressed() -> void:
 	EventBus.kickChar.emit(idChar)

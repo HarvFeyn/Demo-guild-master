@@ -1,125 +1,81 @@
 extends Control
 
-var createPlayer: Node
+var create_player_scene: Node
+
+@onready var char_spawner: Node = $CharSpawner
+@onready var team_manager: Node = $TeamManager
+@onready var dungeon_manager: Node = $DungeonManager
+@onready var char_container_player: Node = $HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer
+@onready var char_container_npc: Node = $HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2
+@onready var selected_list_container: Node = $HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer
+@onready var label_nombre_joueurs: Node = $HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/nombreDeJoeur
+@onready var hbox: Node = $HBoxContainer
+@onready var panel_dungeon: Node = $PanelContainer
 
 func _init() -> void:
 	if(!global_data.statNpcList.has(0)):
 		global_data.statNpcList[0] = null
 
 func _ready() -> void: 
-	if(!global_data.statNpcList[0]):
-		$HBoxContainer.visible = false
-		createPlayer = add_child_to_current_scene("uid://c8rev7nn1yxor")
-	else:
-		displayPlayer()
-		for char: int in global_data.statNpcList:
-			if(!char==0):
-				add_char_to_characters(char)
-	EventBus.deleteMeDaddy.connect(player_create)
-	EventBus.charCardClick.connect(charSelected)
-	EventBus.kickChar.connect(kickChar)
+	char_spawner.container_player = char_container_player
+	char_spawner.container_npc = char_container_npc
+	team_manager.selected_list_container = selected_list_container
+	team_manager.label_count = label_nombre_joueurs
+	dungeon_manager.hbox = hbox
+	dungeon_manager.panel_dungeon = panel_dungeon
+	dungeon_manager.char_spawner = char_spawner
+	dungeon_manager.team_manager = team_manager
+	
+	EventBus.deleteMeDaddy.connect(_on_player_create)
+	EventBus.charCardClick.connect(_on_char_selected)
+	EventBus.kickChar.connect(_on_kickChar)
+	
 	global_data.selectedTeam = {}
 	global_data.selectedTeam[0] = 0
 	
+	if(!global_data.statNpcList[0]):
+		hbox.visible = false
+		create_player_scene = _spaw_scene("uid://c8rev7nn1yxor")
+	else:
+		_display_all_chars()
 
-func _process(delta: float) -> void:
-	pass
-
-func add_child_to_current_scene(filepath: String) -> Node:
-	var packed_scene: PackedScene = load(filepath)
-	var instance: Node = packed_scene.instantiate()
+func _spaw_scene(filepath: String) -> Node:
+	var instance: Node = load(filepath).instantiate()
 	get_tree().current_scene.add_child(instance)
 	return instance
 
-func player_create() -> void:
-	get_tree().current_scene.remove_child(createPlayer)
-	displayPlayer()
+func _on_player_create() -> void:
+	get_tree().current_scene.remove_child(create_player_scene)
+	hbox.visible = true
+	char_spawner.add_char_card(0)
+	team_manager.add_name_to_selected_list(0)
 
 func _on_back_to_menu_pressed() -> void:
 	get_tree().change_scene_to_file("uid://b8j4tmq5qo4f0")
-	
-func add_player_to_characters() -> void:
-	var filepath: String = "uid://cr6ru7nhhudnb"
-	var packed_scene: PackedScene = load(filepath)
-	var instance: Node = packed_scene.instantiate()
-	instance.idChar = 0
-	global_data.nodeNpcList[0]=instance
-	$HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer.add_child(instance)
-
-func add_char_to_characters(id: int) -> void:
-	if(!id==0):
-		var filepath: String = "uid://cr6ru7nhhudnb"
-		var packed_scene: PackedScene = load(filepath)
-		var instance: Node = packed_scene.instantiate()
-		instance.idChar = id
-		global_data.nodeNpcList[id]=instance
-		$HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2.add_child(instance)
-
-func remove_char_from_characters(id: int) -> void:
-	if(!id==0):
-		var instance: Node = global_data.nodeNpcList[id]
-		$HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2.remove_child(instance)
-		instance.queue_free()
-	
-func displayPlayer() -> void:
-	$HBoxContainer.visible = true
-	add_player_to_characters()
-	addNameToSelectedList(0)
 
 func _on_donjon_1_pressed() -> void:
-	startDungeon(1)
+	dungeon_manager.start_dungeon(1)
 
 func _on_donjon_2_pressed() -> void:
-	startDungeon(2)
+	dungeon_manager.start_dungeon(2)
 
 func _on_donjon_3_pressed() -> void:
-	startDungeon(3)
+	dungeon_manager.start_dungeon(3)
 
-func startDungeon(difficulty: int) -> void:
-	$HBoxContainer.visible = false
-	$PanelContainer.visible = true
-	global_data.gainXpSelected(difficulty*difficulty*100)
-	EventBus.emit_signal("refreshCharData")
-	var newChar: CharStats = CharStats.new(DungeonResolver.generate_hero_name(),DungeonResolver.generate_hero_class())
-	global_data.statNpcList[newChar.idChar] = newChar
-	add_char_to_characters(newChar.idChar)
-	refreshPalyerInSelectedList()
-
-func charSelected(id: int) -> void:
-	if(global_data.selectedTeam.has(id)):
-		global_data.selectedTeam.erase(id)
-		var label: Node = $HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer.get_node_or_null(str(id))
-		if(label):
-			label.queue_free()
-	else:
-		global_data.selectedTeam[id] = id
-		addNameToSelectedList(id)
-	$HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/nombreDeJoeur.text = "( " + str(global_data.selectedTeam.size()) + " / 5 ) Joueurs"
-
-func addNameToSelectedList(id: int) -> void:
-	var label: Node = Label.new()
-	label.name = str(id)
-	label.text = global_data.statNpcList[id].charName + " - " + global_data.statNpcList[id].EnumCharClass.keys()[global_data.statNpcList[id].charClass] + " - lvl " + str(global_data.statNpcList[id].level)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	$HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer.add_child(label)
+func _on_char_selected(id: int) -> void:
+	team_manager.toggle_char_selection(id)
 
 func _on_finish_dungeon_pressed() -> void:
-	$HBoxContainer.visible = true
-	$PanelContainer.visible = false
+	dungeon_manager.finish_dungeon()
 
-func refreshPalyerInSelectedList() -> void:
-	for id: int in global_data.selectedTeam:
-		var label: Node = $HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer.get_node_or_null(str(id))
-		if(label):
-			label.free()
-		addNameToSelectedList(id)
-
-func kickChar(id: int) -> void:
+func _on_kickChar(id: int) -> void:
 	global_data.statNpcList.erase(id)
-	if(global_data.selectedTeam.has(id)):
-		global_data.selectedTeam.erase(id)
-		var label: Node = $HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer.get_node_or_null(str(id))
-		if(label):
-			label.queue_free()
-		$HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer/nombreDeJoeur.text = "( " + str(global_data.selectedTeam.size()) + " / 5 ) Joueurs"
-	remove_char_from_characters(id)
+	team_manager.remove_name_from_selected_list(id)
+	char_spawner.remove_char_card(id)
+
+func _display_all_chars() -> void:
+	hbox.visible = true
+	for id: int in global_data.statNpcList:
+		char_spawner.add_char_card(id)
+		if global_data.selectedTeam.has(id):
+			team_manager.add_name_to_selected_list(id)

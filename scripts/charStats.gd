@@ -78,3 +78,6 @@ func _on_experience_set(new_value: int) -> void:
 	experience = new_value
 	if not old_level == level:
 		recalculate_stats()
+
+func get_display_name() -> String:
+	return "%s - %s - lvl %d" % [charName, EnumCharClass.keys()[charClass], level]

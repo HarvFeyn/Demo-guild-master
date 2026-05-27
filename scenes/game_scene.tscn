@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bdca4a3ihy558" path="res://scripts/game_scene.gd" id="1_x1kwt"]
 [ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_aufxv"]
+[ext_resource type="Script" uid="uid://cv0vnmyvld1ns" path="res://scenes/char_spawner.gd" id="2_y3j0m"]
+[ext_resource type="Script" uid="uid://c3wokikyjcvck" path="res://scenes/team_manager.gd" id="3_rurhu"]
+[ext_resource type="Script" uid="uid://bw0obuieli2wv" path="res://scenes/dungeon_manager.gd" id="4_kk2rg"]
 
 [node name="game_scene" type="Control" unique_id=604649230]
 layout_mode = 3
@@ -13,6 +16,15 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_x1kwt")
+
+[node name="CharSpawner" type="Node" parent="." unique_id=2126143011]
+script = ExtResource("2_y3j0m")
+
+[node name="TeamManager" type="Node" parent="." unique_id=2120390588]
+script = ExtResource("3_rurhu")
+
+[node name="DungeonManager" type="Node" parent="." unique_id=1480396064]
+script = ExtResource("4_kk2rg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1548473931]
 layout_mode = 1
