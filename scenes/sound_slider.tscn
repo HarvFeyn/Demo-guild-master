@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdfi54aponsra"]
 
-[ext_resource type="Script" uid="uid://c6tqhdvucs13r" path="res://h_slider.gd" id="1_fhqkb"]
+[ext_resource type="Script" uid="uid://c6tqhdvucs13r" path="res://scripts/h_slider.gd" id="1_fhqkb"]
 
 [node name="sound_slider" type="HSlider" unique_id=2030699691]
 offset_right = 8.0

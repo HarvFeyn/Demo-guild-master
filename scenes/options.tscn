@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dq3xmi1gg4uo5"]
 
-[ext_resource type="PackedScene" uid="uid://bdfi54aponsra" path="res://sound_slider.tscn" id="1_5v8ap"]
-[ext_resource type="Script" uid="uid://cp4fj5rcobhrq" path="res://options.gd" id="1_ao2gm"]
-[ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://button_with_sound.tscn" id="2_se8ut"]
+[ext_resource type="PackedScene" uid="uid://bdfi54aponsra" path="res://scenes/sound_slider.tscn" id="1_5v8ap"]
+[ext_resource type="Script" uid="uid://cp4fj5rcobhrq" path="res://scripts/options.gd" id="1_ao2gm"]
+[ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_se8ut"]
 
 [node name="Options" type="MarginContainer" unique_id=1302477544]
 anchors_preset = 15

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8j4tmq5qo4f0"]
 
-[ext_resource type="Script" uid="uid://bxodyvq41hj8g" path="res://main_menu.gd" id="1_fu7sn"]
-[ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://button_with_sound.tscn" id="2_glbon"]
+[ext_resource type="Script" uid="uid://bxodyvq41hj8g" path="res://scripts/main_menu.gd" id="1_fu7sn"]
+[ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_glbon"]
 
 [node name="MainMenu" type="MarginContainer" unique_id=54545648]
 anchors_preset = 15
@@ -25,9 +25,9 @@ theme_override_constants/separation = 30
 layout_mode = 2
 text = "Nouvelle Partie"
 
-[node name="Load" parent="VBoxContainer" unique_id=2028009892 instance=ExtResource("2_glbon")]
+[node name="Continue" parent="VBoxContainer" unique_id=2028009892 instance=ExtResource("2_glbon")]
 layout_mode = 2
-text = "Charger une partie"
+text = "Continuer"
 
 [node name="Options" parent="VBoxContainer" unique_id=405607475 instance=ExtResource("2_glbon")]
 layout_mode = 2
@@ -38,5 +38,6 @@ layout_mode = 2
 text = "Quitter"
 
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

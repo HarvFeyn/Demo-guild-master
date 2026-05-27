@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cr6ru7nhhudnb"]
+
+[ext_resource type="Script" uid="uid://cjea0wn6ldctr" path="res://scripts/player_interface.gd" id="1_lpo5v"]
+[ext_resource type="StyleBox" uid="uid://bbywribc3gils" path="res://resources/charNotSelected.tres" id="1_xhybg"]
+[ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_s1rjy"]
+[ext_resource type="StyleBox" uid="uid://cprstacs6blxq" path="res://resources/charSelected.tres" id="3_u8nje"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kq7k"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.27387273, 0.27387276, 0.27387264, 1)
+border_color = Color(0.014275214, 0.014275223, 0.014275194, 1)
+
+[node name="PlayerInterface" type="PanelContainer" unique_id=596433897]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("1_xhybg")
+script = ExtResource("1_lpo5v")
+style_normal = ExtResource("1_xhybg")
+style_selected = ExtResource("3_u8nje")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=108146040]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1651094625]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="PlayerName" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1143203354]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.13725491, 0.09803922, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1664822927]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1900823863]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="PlayerLvl" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1948233297]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+
+[node name="PlayerClass" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=575400983]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=956470134]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="PlayerMaxHealth" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1080880168]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+
+[node name="PlayerPower" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=918410083]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+
+[node name="PlayerDefense" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=799019288]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+
+[node name="Kick" parent="MarginContainer/VBoxContainer" unique_id=1722355735 instance=ExtResource("2_s1rjy")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_6kq7k")
+text = "Virer de la guilde"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Kick" to="." method="_on_kick_pressed"]

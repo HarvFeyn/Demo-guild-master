@@ -24,6 +24,13 @@ buses/default_bus_layout="uid://brp4ybc2pyo43"
 backgroundMusic="*uid://bvakkw08gmugy"
 global_data="*uid://cq5y0w77iv2f"
 EventBus="*uid://bi1qatnc5n3sj"
+BackgroundMusic="*uid://bvakkw08gmugy"
+DungeonResolver="*uid://c6qmgtq8ruueg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/inferred_declaration=2
 
 [physics]
 

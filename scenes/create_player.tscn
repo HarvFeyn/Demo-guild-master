@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://c8rev7nn1yxor"]
+
+[ext_resource type="Script" uid="uid://nhyaknlbtu8x" path="res://scripts/create_player.gd" id="1_68y33"]
+[ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_ku212"]
+
+[node name="create_player" type="PanelContainer" unique_id=2111895125]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -57.5
+offset_right = 87.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_68y33")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=450396314]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1216829851]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer" unique_id=366562387]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Give your player name"
+
+[node name="NameInput" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=1160295324]
+layout_mode = 2
+
+[node name="invalidName" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1422833299]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5499457, 0.014934623, 9.62615e-08, 1)
+text = "Name as to be at least 2 char"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1253488122]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1715702448]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Tank" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=453898780]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Tank"
+
+[node name="TankCheck" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=62227434]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1747599221]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DPS" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1338509515]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "DPS"
+
+[node name="DPSCheck" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1026720389]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=472069916]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Heal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=641716071]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Heal"
+
+[node name="HealCheck" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=883041007]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Validate" parent="MarginContainer/VBoxContainer" unique_id=1722355735 instance=ExtResource("2_ku212")]
+layout_mode = 2
+text = "Valider
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TankCheck" to="." method="_on_tank_check_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DPSCheck" to="." method="_on_dps_check_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HealCheck" to="." method="_on_heal_check_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Validate" to="." method="_on_validate_pressed"]

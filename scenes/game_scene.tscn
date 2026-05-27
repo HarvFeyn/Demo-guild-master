@@ -1,0 +1,215 @@
+[gd_scene format=3 uid="uid://fpbswm05qhgk"]
+
+[ext_resource type="Script" uid="uid://bdca4a3ihy558" path="res://scripts/game_scene.gd" id="1_x1kwt"]
+[ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_aufxv"]
+
+[node name="game_scene" type="Control" unique_id=604649230]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_x1kwt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1548473931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=855572358]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer" unique_id=1011635652]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer/PanelContainer" unique_id=1487405283]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/ScrollContainer" unique_id=929823985]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer" unique_id=132251075]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=597453080]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1266393489]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Votre Personnage :"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=477684569]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2008566606]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Votre Guilde :"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=938510192]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2" unique_id=314726434]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1793572516]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2" unique_id=1059578097]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer" unique_id=1406616618]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer" unique_id=1163570691]
+layout_mode = 2
+
+[node name="titre" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer" unique_id=491850801]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+text = "Votre équipe de donjon :"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1130799295]
+layout_mode = 2
+
+[node name="nombreDeJoeur" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1453990996]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.949176, 0.27354756, 0.26324835, 1)
+text = "( 1 / 5 ) Joueurs"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1326917947]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer" unique_id=1862232703]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer" unique_id=1423665968]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer" unique_id=1717171667]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=889618303]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+text = "Donjons :"
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=604567350]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "Le groupe sera complété au début du donjon	
+ s'il n'est pas déjà au maximum de joueur"
+
+[node name="donjon1" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1722355735 instance=ExtResource("2_aufxv")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Donjon EZ"
+
+[node name="donjon2" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1435494602 instance=ExtResource("2_aufxv")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Donjon ça va trkl"
+
+[node name="donjon3" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=90878078 instance=ExtResource("2_aufxv")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Donjon dur sa race"
+
+[node name="PanelContainer" type="MarginContainer" parent="." unique_id=1561233486]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer" unique_id=2014413327]
+layout_mode = 2
+
+[node name="FinishDungeon" type="Button" parent="PanelContainer/PanelContainer" unique_id=1132913343]
+layout_mode = 2
+text = "Continuer"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=513477475]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.5
+offset_top = -40.0
+offset_right = 58.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1004519794]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+
+[node name="BackToMenu" parent="MarginContainer/VBoxContainer" unique_id=1530165134 instance=ExtResource("2_aufxv")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back To Menu"
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/donjon1" to="." method="_on_donjon_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/donjon2" to="." method="_on_donjon_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/donjon3" to="." method="_on_donjon_3_pressed"]
+[connection signal="pressed" from="PanelContainer/PanelContainer/FinishDungeon" to="." method="_on_finish_dungeon_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
