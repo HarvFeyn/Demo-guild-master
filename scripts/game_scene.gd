@@ -12,6 +12,8 @@ var create_player_scene: Node
 @onready var hbox: Node = $HBoxContainer
 @onready var panel_dungeon: Node = $PanelContainer
 
+const ConfirmationPopup: Resource = preload("uid://coke752lxlv4o")
+
 func _init() -> void:
 	if(!global_data.statNpcList.has(0)):
 		global_data.statNpcList[0] = null
@@ -28,7 +30,7 @@ func _ready() -> void:
 	
 	EventBus.deleteMeDaddy.connect(_on_player_create)
 	EventBus.charCardClick.connect(_on_char_selected)
-	EventBus.kickChar.connect(_on_kickChar)
+	EventBus.kickChar.connect(ask_delete_char)
 	
 	global_data.selectedTeam = {}
 	global_data.selectedTeam[0] = 0
@@ -72,6 +74,13 @@ func _on_kickChar(id: int) -> void:
 	global_data.statNpcList.erase(id)
 	team_manager.remove_name_from_selected_list(id)
 	char_spawner.remove_char_card(id)
+
+func ask_delete_char(id: int) -> void:
+	var popup: Node = ConfirmationPopup.instantiate()
+	popup.setup("Virer " + global_data.statNpcList[id].charName + " de la guilde ?")
+	add_child(popup)
+	popup.confirmed.connect(func()->void: _on_kickChar(id))
+	popup.cancelled.connect(func()->void: pass)
 
 func _display_all_chars() -> void:
 	hbox.visible = true

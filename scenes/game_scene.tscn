@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bdca4a3ihy558" path="res://scripts/game_scene.gd" id="1_x1kwt"]
 [ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_aufxv"]
-[ext_resource type="Script" uid="uid://cv0vnmyvld1ns" path="res://scenes/char_spawner.gd" id="2_y3j0m"]
-[ext_resource type="Script" uid="uid://c3wokikyjcvck" path="res://scenes/team_manager.gd" id="3_rurhu"]
-[ext_resource type="Script" uid="uid://bw0obuieli2wv" path="res://scenes/dungeon_manager.gd" id="4_kk2rg"]
+[ext_resource type="Script" uid="uid://cv0vnmyvld1ns" path="res://scripts/char_spawner.gd" id="2_y3j0m"]
+[ext_resource type="Script" uid="uid://c3wokikyjcvck" path="res://scripts/team_manager.gd" id="3_rurhu"]
+[ext_resource type="Script" uid="uid://bw0obuieli2wv" path="res://scripts/dungeon_manager.gd" id="4_kk2rg"]
 
 [node name="game_scene" type="Control" unique_id=604649230]
 layout_mode = 3
