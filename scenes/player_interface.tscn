@@ -4,14 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://bbywribc3gils" path="res://resources/charNotSelected.tres" id="1_xhybg"]
 [ext_resource type="PackedScene" uid="uid://6xmy606okvso" path="res://scenes/button_with_sound.tscn" id="2_s1rjy"]
 [ext_resource type="StyleBox" uid="uid://cprstacs6blxq" path="res://resources/charSelected.tres" id="3_u8nje"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kq7k"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.27387273, 0.27387276, 0.27387264, 1)
-border_color = Color(0.014275214, 0.014275223, 0.014275194, 1)
+[ext_resource type="StyleBox" uid="uid://vpcthbcc2cpx" path="res://resources/inviteAndKick.tres" id="5_4xer1"]
 
 [node name="PlayerInterface" type="PanelContainer" unique_id=596433897]
 anchors_preset = 15
@@ -82,12 +75,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 12
 
-[node name="Kick" parent="MarginContainer/VBoxContainer" unique_id=1722355735 instance=ExtResource("2_s1rjy")]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1556680481]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Kick" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=1722355735 instance=ExtResource("2_s1rjy")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_6kq7k")
+theme_override_styles/normal = ExtResource("5_4xer1")
 text = "Virer de la guilde"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Kick" to="." method="_on_kick_pressed"]
+[node name="Invite" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=730974814]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("5_4xer1")
+text = "Inviter dans la guilde et continuer"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/Kick" to="." method="_on_kick_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/Invite" to="." method="_on_invite_pressed"]

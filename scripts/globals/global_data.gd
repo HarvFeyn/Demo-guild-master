@@ -3,7 +3,10 @@ extends Node
 var nextIdChar: int = 0
 var statNpcList: Dictionary[int, CharStats] = {}
 var nodeNpcList: Dictionary[int, Node] = {}
+var nodeGroupList: Dictionary[int, Node] = {}
 var selectedTeam: Dictionary[int, int] = {}
+enum Screen { TEAM_MANAGER,DUNGEON,CREATE_PLAYER }
+var current_screen: Screen
 
 func gainXpSelected(Xp:int) -> void:
 	for char: int in selectedTeam:

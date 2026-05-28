@@ -22,6 +22,7 @@ func _on_validate_pressed() -> void:
 	var newName: String = name_input.get_text()
 	if newName.length() > 1:
 		var player: CharStats = CharStats.new(newName,classOfTheChar)
+		player.is_guilded = true
 		global_data.statNpcList[0] = player
 		EventBus.emit_signal("deleteMeDaddy")
 	else:

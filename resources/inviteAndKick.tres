@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://vpcthbcc2cpx"]
+
+[resource]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.27387273, 0.27387276, 0.27387264, 1)
+border_color = Color(0.014275214, 0.014275223, 0.014275194, 1)

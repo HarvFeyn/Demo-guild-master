@@ -26,7 +26,7 @@ signal health_changed(current_health: int, max_health: int)
 
 var base_max_health: int = 100
 var base_defense: int = 15
-var base_power: int = 35
+var base_power: int = 50
 var experience: int = 0: set = _on_experience_set
 var charClass: EnumCharClass
 var charName: String = ""
@@ -36,7 +36,7 @@ var level: int:
 var current_max_health: int = 100
 var current_defense: int = 10
 var current_power: int = 10
-
+var is_guilded: bool
 var health: int = 0
 
 func _init(newCharName: String, newCharClass: EnumCharClass) -> void:
@@ -46,7 +46,8 @@ func _init(newCharName: String, newCharClass: EnumCharClass) -> void:
 	charClass = newCharClass
 	setup_stats.call_deferred()
 	recalculate_stats()
-	
+	is_guilded = false
+
 func setup_stats() -> void:
 	health = current_max_health
 
@@ -72,6 +73,9 @@ func _on_health_set(new_value: int) -> void:
 	health_changed.emit(health, current_max_health)
 	if health <= 0:
 		health_depleted.emit()
+
+func take_damage(dmg: int) -> void:
+	health -= max(0,dmg - current_defense)
 
 func _on_experience_set(new_value: int) -> void:
 	var old_level: int = level
