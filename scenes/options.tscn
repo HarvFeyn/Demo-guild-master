@@ -27,7 +27,7 @@ theme_override_constants/separation = 30
 [node name="MasterLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=191074097]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Master"
+text = "Global"
 
 [node name="Master" parent="MarginContainer/VBoxContainer" unique_id=2030699691 instance=ExtResource("1_5v8ap")]
 layout_mode = 2
